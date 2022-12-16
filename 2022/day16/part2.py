@@ -16,6 +16,7 @@ with open(FILE, "r", encoding="utf-8") as f:
 
         state[name] = {"rate": rate, "valves": valves}
 
+@functools.cache
 def dfs(opened, minutes, curr):
     if minutes <= 0:
         return 0
@@ -37,7 +38,7 @@ def dfs(opened, minutes, curr):
             )
 
     return best
-
+@functools.cache
 def part_two(opened, minutes, curr):
     if minutes <= 0:
         return dfs(opened, 26, "AA")
@@ -58,6 +59,4 @@ def part_two(opened, minutes, curr):
             )
 
     return best
-print(part_two(frozenset(), 26, 'AA'))
-
-
+print(f"Part two: {part_two(frozenset(), 26, 'AA')}")
